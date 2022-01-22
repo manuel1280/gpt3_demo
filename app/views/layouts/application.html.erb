@@ -1,16 +1,91 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Gpt3Demo</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>GPT3-Demo</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
 
-  <body>
+<body class="<%= yield (:body_class) %>">
+<% if flash[:notice] %>
+  <div id="notify" class="notification is-success global-notification">
+    <button class="delete" onclick ="hide_flash()"></button>
+    <p class="notice"><%= notice %></p>
+  </div>
+<% end %>
+<% if flash[:alert] %>
+  <div id="notify" class="notification is-danger global-notification">
+    <button class="delete" onclick ="hide_flash()"></button>
+    <p class="alert"><%= alert %></p>
+  </div>
+<% end %>
+
+<nav class="navbar is-info" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <% if user_signed_in? %>
+      <%= link_to root_path, class:"navbar-item" do %>
+        <h1 class="title is-5">Home</h1>
+      <% end  %>
+      <%= link_to tickets_path, class:"navbar-item" do %>
+        <h1 class="title is-5">my calories</h1>
+
+      <% end  %>
+    <% end %>
+    <div class="navbar-burger burger" data-target="navbar">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+
+  <div id="navbar" class="navbar-menu">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="field is-grouped">
+
+
+          <% if user_signed_in? %>
+            <%= link_to 'add calorie', new_ticket_path, class: "navbar-item button is-dark" %>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+              <%= link_to 'Account', edit_user_registration_path, class: "navbar-link" %>
+              <div class="navbar-dropdown is-right">
+                <%= link_to 'Edit', edit_user_registration_path, class:"navbar-item" %>
+                <%= link_to "Log Out", destroy_user_session_path, 'data-turbo-method': :delete, class:"navbar-item" %>
+              </div>
+            </div>
+          <% else %>
+
+            <%= link_to "Sign In", new_user_session_path, class:"navbar-item button is-info" %>
+            <%= link_to "Sign up", new_user_registration_path, class:"navbar-item button is-info"%>
+
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<%= yield(:header) %>
+
+<% unless current_page?(root_path) %>
+  <div class="container">
     <%= yield %>
-  </body>
+  </div>
+<% else %>
+  <%= yield %>
+<% end %>
+
+</body>
+<script>
+    function hide_flash(){
+        document.getElementById('notify').style.display = 'none';
+    }
+</script>
 </html>
