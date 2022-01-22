@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /tickets or /tickets.json
   def index
@@ -28,7 +29,8 @@ class TicketsController < ApplicationController
         format.html { redirect_to tickets_path, notice: "Ticket was successfully created." }
         format.json { render :show, status: :created, location: @ticket }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        @tickets = Ticket.all
+        format.html { render :index, status: :unprocessable_entity }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
       end
     end

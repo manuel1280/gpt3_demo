@@ -14,12 +14,13 @@
 <nav class="navbar is-info" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <% if user_signed_in? %>
-      <%= link_to root_path, class:"navbar-item" do %>
-        <h1 class="title is-5">Home</h1>
-      <% end  %>
       <%= link_to tickets_path, class:"navbar-item" do %>
         <h1 class="title is-5">my calories</h1>
 
+      <% end  %>
+    <% else %>
+      <%= link_to root_path, class:"navbar-item" do %>
+        <h1 class="title is-5">Home</h1>
       <% end  %>
     <% end %>
     <div class="navbar-burger burger" data-target="navbar">
@@ -58,17 +59,10 @@
     </div>
   </div>
 </nav>
-
-<%= render 'layouts/header' %>
-
-<% unless current_page?(root_path) %>
-  <div class="container">
-    <%= yield %>
-  </div>
-<% else %>
-  <%= yield %>
+<% if user_signed_in? && !current_page?(root_path)%>
+  <%= render 'layouts/header' %>
 <% end %>
-
+<%= yield %>
 </body>
 
 </html>

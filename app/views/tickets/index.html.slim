@@ -22,4 +22,4 @@ section
                 td = link_to 'Edit', edit_ticket_path(ticket)
                 td = button_to 'Destroy', ticket_path(ticket), method: :delete, class: 'button is-danger is-small'
       .column.is-4
-        = render 'form', ticket: Ticket.new
+        = render 'form', ticket: @ticket || Ticket.new
