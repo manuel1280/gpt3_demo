@@ -1,5 +1,14 @@
-h1 New ticket
-
-== render 'form'
-
-= link_to 'Back', tickets_path
+= content_for :header
+  section.hero.is-info
+    .hero-body
+      .container
+        h1.title
+          | Crear ticket
+  section
+    .container
+      .columns.is-centered
+      .column.is-4
+        .pv4
+          = render 'form'
+          br
+          = link_to 'Back', tickets_path

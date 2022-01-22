@@ -10,20 +10,7 @@
   <%= javascript_importmap_tags %>
 </head>
 
-<body class="<%= yield (:body_class) %>">
-<% if flash[:notice] %>
-  <div id="notify" class="notification is-success global-notification">
-    <button class="delete" onclick ="hide_flash()"></button>
-    <p class="notice"><%= notice %></p>
-  </div>
-<% end %>
-<% if flash[:alert] %>
-  <div id="notify" class="notification is-danger global-notification">
-    <button class="delete" onclick ="hide_flash()"></button>
-    <p class="alert"><%= alert %></p>
-  </div>
-<% end %>
-
+<body class="<%= yield(:body_class) %>">
 <nav class="navbar is-info" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <% if user_signed_in? %>
@@ -72,7 +59,7 @@
   </div>
 </nav>
 
-<%= yield(:header) %>
+<%= render 'layouts/header' %>
 
 <% unless current_page?(root_path) %>
   <div class="container">
@@ -83,9 +70,5 @@
 <% end %>
 
 </body>
-<script>
-    function hide_flash(){
-        document.getElementById('notify').style.display = 'none';
-    }
-</script>
+
 </html>

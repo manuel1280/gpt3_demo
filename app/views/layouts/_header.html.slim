@@ -1,0 +1,16 @@
+section.hero.is-info
+  .hero-body
+    .container
+      h1.title
+        | Crear ticket
+
+- flash.each do |name, msg|
+  - if msg.is_a?(String)
+    #notify class=("notification #{name.to_s == 'notice' ? 'is-success' : 'is-danger'} global-notification")
+      button.delete onclick="hide_flash()"
+      p class="#{name.to_s}" = msg
+
+javascript:
+  function hide_flash() {
+    document.getElementById('notify').style.display = 'none';
+  }
