@@ -1,0 +1,17 @@
+p#notice = notice
+
+p
+  strong Body:
+  = @ticket.body
+
+p
+  strong Category:
+  = @ticket.category
+
+p
+  strong User:
+  = @ticket.user
+
+=> link_to 'Edit', edit_ticket_path(@ticket)
+'|
+=< link_to 'Back', tickets_path
