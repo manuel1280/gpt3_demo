@@ -16,7 +16,7 @@ section
             - @tickets.each do |ticket|
               tr
                 td = ticket.body
-                td = ticket.category
+                td.is-bold = " -- #{ticket.category}"
                 td = ticket.user.email
                 td = link_to 'Show', ticket
                 td = link_to 'Edit', edit_ticket_path(ticket)
