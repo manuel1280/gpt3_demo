@@ -22,4 +22,5 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: gtp3_demo_db
+  username: johanbuitrago
