@@ -17,9 +17,9 @@ section
               tr
                 td = ticket.body
                 td = ticket.category
-                td = ticket.user
+                td = ticket.user.email
                 td = link_to 'Show', ticket
                 td = link_to 'Edit', edit_ticket_path(ticket)
-                td = link_to 'Destroy', ticket, data: { confirm: 'Are you sure?' }, method: :delete
+                td = button_to 'Destroy', ticket_path(ticket), method: :delete, class: 'button is-danger is-small'
       .column.is-4
         = render 'form', ticket: Ticket.new
