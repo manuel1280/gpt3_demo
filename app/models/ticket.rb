@@ -1,5 +1,5 @@
 class Ticket < ApplicationRecord
-  require 'Gpt3'
+  require './lib/gpt3'
   belongs_to :user
   validates :body, presence: true
 
