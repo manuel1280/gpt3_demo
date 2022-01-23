@@ -1,0 +1,7 @@
+tr
+  td = ticket.body
+  td.is-bold = " -- #{ticket.category}"
+  td = ticket.user.email
+  td = link_to 'Show', ticket
+  td = link_to 'Edit', edit_ticket_path(ticket)
+  td = button_to 'Destroy', ticket_path(ticket), method: :delete, class: 'button is-danger is-small'
