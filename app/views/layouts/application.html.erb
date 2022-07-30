@@ -15,8 +15,6 @@
   <div class="navbar-brand">
     <% if user_signed_in? %>
       <%= link_to tickets_path, class:"navbar-item" do %>
-        <h1 class="title is-5">my calories</h1>
-
       <% end  %>
     <% else %>
       <%= link_to root_path, class:"navbar-item" do %>
@@ -38,8 +36,6 @@
 
 
           <% if user_signed_in? %>
-            <%= link_to 'add calorie', new_ticket_path, class: "navbar-item button is-dark" %>
-
             <div class="navbar-item has-dropdown is-hoverable">
               <%= link_to 'Account', edit_user_registration_path, class: "navbar-link" %>
               <div class="navbar-dropdown is-right">

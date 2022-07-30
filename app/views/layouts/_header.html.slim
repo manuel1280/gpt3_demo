@@ -2,7 +2,7 @@ section.hero.is-info
   .hero-body
     .container
       h1.title
-        | Crear ticket
+        = current_user.name
 
 //- flash.each do |name, msg|
   - if msg.is_a?(String)
