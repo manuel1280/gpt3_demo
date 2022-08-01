@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     if user_signed_in?
-      redirect_to tickets_path and return
+      redirect_to conversation_path(Conversation.last.id) and return
     end
   end
 end
