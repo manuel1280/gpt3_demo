@@ -2,18 +2,19 @@ section
   .container
     .columns.is-centered
       .column.is-8
-        table
-          thead
-            tr
-              th Body
-              th Category
-              th User
-              th
-              th
-              th
-          tbody
-            = turbo_stream_from "tickets"
-            #tickets
-              = render @tickets
+        .table-container.is-bordered
+          table.table
+            thead
+              tr
+                th Body
+                th Category
+                th User
+                th
+                th
+                th
+            tbody
+              = turbo_stream_from "tickets"
+              #tickets
+                = render @tickets
       .column.is-4
         = render 'form', ticket: @ticket || Ticket.new
