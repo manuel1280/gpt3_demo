@@ -19,6 +19,11 @@ class Gpt3
     response['label']
   end
 
+  def self.completions(text)
+    response = client.completions(engine: "text-davinci-001", parameters: { prompt: text, max_tokens: 5 })
+    response.parsed_response['choices'].map{ |c| c["text"] }
+  end
+
   private
   def self.client
     token = (Rails.env == 'production' ? ENV['OPEN_AI_KEY'] : Rails.application.credentials.open_ai[:key])
