@@ -12,5 +12,6 @@ class Conversation < ApplicationRecord
   require './lib/gpt3'
   validates :text, presence: true
   attr_accessor :message
-  after_create_commit {broadcast_append_to "conversation"}
+  broadcasts_to :itself
+  #after_update {broadcast_replace_to "my_chanel"}
 end

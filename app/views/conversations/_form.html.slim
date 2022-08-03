@@ -1,7 +1,7 @@
 .columns
   .column.is-fullwidth.is-centered
     .form-inputs
-      = form_for @conversation, method: :patch do |f|
+      = form_for conversation, method: :patch do |f|
         .control
           .field
             = f.hidden_field :text

@@ -1,10 +1,8 @@
+= turbo_stream_from @conversation
 section
   .container
     .columns.is-centered
       .column.is-8
-        .container.box
-            = turbo_frame_tag "conversation"
-            #conversation
-              = render @conversation
+        = render @conversation
       .column.is-4
-        = render 'form', ticket: @conversation
+        = render 'form', conversation: @conversation
