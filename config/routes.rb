@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :tickets
   resources :home, only: [:index]
   resources :conversations, only: [:show] do
+    collection do
+      post :clean
+    end
     resources :messages, only: [:create]
   end
   root "home#index"

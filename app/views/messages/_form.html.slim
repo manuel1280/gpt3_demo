@@ -7,3 +7,4 @@
             = f.text_field :body, class: 'message-area'
           .actions
             = f.submit 'Crear', class: 'button is-success'
+            = link_to 'Limpiar', clean_conversations_path, method: :post, class: 'button is-info'

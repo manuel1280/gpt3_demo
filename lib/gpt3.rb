@@ -20,8 +20,8 @@ class Gpt3
   end
 
   def self.completions(text)
-    response = client.completions(engine: "text-davinci-001", parameters: { prompt: text, max_tokens: 5 })
-    response.parsed_response['choices'].map{ |c| c["text"] }
+    response = client.completions(engine: "text-davinci-001", parameters: { prompt: text, max_tokens: 10 })
+    response.parsed_response['choices'].map{ |c| c["text"] }.first
   end
 
   private

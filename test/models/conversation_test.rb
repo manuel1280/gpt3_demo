@@ -6,6 +6,7 @@
 #  text       :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  turn       :string
 #
 
 require "test_helper"

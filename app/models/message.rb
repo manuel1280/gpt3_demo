@@ -12,7 +12,7 @@
 
 class Message < ApplicationRecord
   belongs_to :conversation
-  belongs_to :user
+  belongs_to :user, optional: true
   broadcasts_to :conversation
   after_save :update_text_conversation
 
@@ -23,6 +23,7 @@ class Message < ApplicationRecord
     else
       text = body
     end
-    conversation.update_columns(text: text)
+    turn = user_id.present? ? 'machine' : 'user'
+    conversation.update(text: text, turn: turn)
   end
 end
