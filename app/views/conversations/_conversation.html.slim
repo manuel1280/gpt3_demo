@@ -1,3 +1,4 @@
 div id="conversation_#{conversation.id}"
   .container.box
-    = conversation.text
+    #messages
+      = render conversation.messages

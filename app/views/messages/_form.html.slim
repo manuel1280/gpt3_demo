@@ -1,10 +1,9 @@
 .columns
   .column.is-fullwidth.is-centered
     .form-inputs
-      = form_for conversation, method: :patch do |f|
+      = form_with model: [conversation, Message.new] do |f|
         .control
           .field
-            = f.hidden_field :text
-            = f.text_field :message, class: 'message-area'
+            = f.text_field :body, class: 'message-area'
           .actions
             = f.submit 'Crear', class: 'button is-success'
