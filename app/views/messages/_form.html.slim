@@ -3,7 +3,7 @@
     .form-inputs
       = form_with model: [conversation, Message.new] do |f|
         .control
-          = f.text_field :body, class: 'message-area'
+          = f.text_field :body, required: !current_user.is_admin, class: 'message-area'
           .action-buttons
             = f.submit 'Enviar', class: 'button is-info margined-r'
             - if current_user.is_admin
