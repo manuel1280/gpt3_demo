@@ -3,8 +3,9 @@
     .form-inputs
       = form_with model: [conversation, Message.new] do |f|
         .control
-          .field
-            = f.text_field :body, class: 'message-area'
-          .actions
-            = f.submit 'Crear', class: 'button is-success'
-            = link_to 'Limpiar', clean_conversations_path, method: :post, class: 'button is-info'
+          = f.text_field :body, class: 'message-area'
+          .action-buttons
+            = f.submit 'Enviar', class: 'button is-info margined-r'
+            - if current_user.is_admin
+              = link_to 'Limpiar', clean_conversations_path, method: :post, class: 'button is-info'
+
