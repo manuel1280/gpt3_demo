@@ -3,7 +3,7 @@ section.hero.is-info
     .container
       div.is-half
         h1.title
-          = current_user.name
+          = current_user.name.capitalize
       div.is-half
         = link_to "Log Out", destroy_user_session_path, 'data-turbo-method': :delete, class:"navbar-item"
 
