@@ -24,3 +24,4 @@ production:
   <<: *default
   database: gtp3_demo_db
   username: johanbuitrago
+  password: <%= ENV['GPT3_DEMO_DATABASE_PASSWORD'] %>

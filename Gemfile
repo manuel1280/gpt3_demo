@@ -80,4 +80,5 @@ end
 group :production do
   gem 'pg'
   gem 'rollbar'
+  gem 'pg'
 end
