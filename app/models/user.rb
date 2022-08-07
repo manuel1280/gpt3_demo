@@ -19,5 +19,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  validates :email, uniqueness: {message: 'nombre ya esta registrado'}
   has_many :tickets
 end

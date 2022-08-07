@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
   private
   def sign_up_params
-    email = "#{params[:user][:name]}@gpt.demo"
+    email = "#{params[:user][:name]}@ruby.demo"
     password = 'password'
     params[:user][:email] = email
     params[:user][:password] = password
