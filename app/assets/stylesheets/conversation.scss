@@ -4,6 +4,8 @@
   padding: 0.5em;
   border: 1px solid darkgrey;
   margin-top: 2em;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .message-area{
@@ -23,4 +25,13 @@
 
 .margined-r{
   margin-right: 1em;
+}
+
+.bubble_name{
+  border: 1px solid mediumpurple;
+  border-radius: 5px;
+  color: mediumpurple;
+  font-size: 0.7rem;
+  margin: 0.2em;
+  padding: 0.1em;
 }

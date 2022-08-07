@@ -1,2 +1,4 @@
 span id="message_#{message.id}"
+  span.bubble_name
+    = message.user&.name&.capitalize || 'Gpt3'
   = "#{message.body} "
