@@ -21,4 +21,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :email, uniqueness: {message: 'nombre ya esta registrado'}
   has_many :tickets
+  has_many :messages
 end
