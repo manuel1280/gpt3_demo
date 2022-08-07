@@ -7,5 +7,5 @@
           .action-buttons
             = f.submit 'Enviar', class: 'button is-info margined-r'
             - if current_user.is_admin
-              = link_to 'Limpiar', clean_conversations_path, method: :post, class: 'button is-info'
+              = link_to 'Limpiar', clean_conversations_path, class: 'button is-info'
 

@@ -3,7 +3,6 @@ class ConversationsController < ApplicationController
   end
 
   def clean
-    binding.debugger
     @conversation.clean_text
     redirect_to @conversation
   end
