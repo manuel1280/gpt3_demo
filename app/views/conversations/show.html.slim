@@ -4,6 +4,7 @@ section
   .container
     .columns.is-centered
       .column.is-8
-        = render @conversation
+        .container.box
+          = render @conversation
       .column.is-4
         = render 'messages/form', conversation: @conversation

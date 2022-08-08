@@ -13,13 +13,12 @@ class Conversation < ApplicationRecord
   require './lib/gpt3'
   has_many :messages
   #broadcasts_to :itself
-  after_commit {broadcast_replace_to "messages"}
-
+  after_save {broadcast_replace_to "messages"}
   after_update :gpt3_response
 
   def clean_text
-    self.update_columns(text: nil)
     messages.destroy_all
+    self.update(text: nil)
   end
 
   private
