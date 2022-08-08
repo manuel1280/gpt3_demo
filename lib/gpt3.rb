@@ -4,7 +4,7 @@ class Gpt3
   def self.classify(message)
     response = client.classifications(parameters: {
         examples: [
-            ["My laptop does not work", "IT"],["the office internet is dead", "IT"],
+        ["My laptop does not work", "IT"],["the office internet is dead", "IT"],
         ["Delivery for client #111 is lost", "Sales"],
         ["The monthly revenue report is wrong, total income is under the average", "Administration"],
         ["the web platform is too slow", "IT"],
@@ -20,7 +20,11 @@ class Gpt3
   end
 
   def self.completions(text)
-    response = client.completions(engine: "text-babbage-001", parameters: { prompt: text, max_tokens: 30, temperature: 0.15 })
+    max_tokens = Rails.env == 'production' ? ENV['GPT_MAX_TOKENS'] : 30
+    temperature = Rails.env == 'production' ? ENV['GPT_TEMPERATURE'] : 0.15
+    model = Rails.env == 'production' ? ENV['GPT_MODEL'] : 'text-babbage-001'
+
+    response = client.completions(engine: model, parameters: { prompt: text, max_tokens: max_tokens, temperature: temperature })
     response.parsed_response['choices'].map{ |c| c["text"] }.first
   end
 
