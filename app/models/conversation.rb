@@ -25,7 +25,6 @@ class Conversation < ApplicationRecord
   private
 
   def gpt3_response
-    sleep 2.second
     if turn == 'machine'
       message = Gpt3.completions(self.text)
       self.messages.create(body: message)
