@@ -13,7 +13,7 @@ class Conversation < ApplicationRecord
   require './lib/gpt3'
   has_many :messages
   #broadcasts_to :itself
-  #after_update {broadcast_replace_to "my_chanel"}
+  after_commit {broadcast_replace_to "messages"}
 
   after_update :gpt3_response
 

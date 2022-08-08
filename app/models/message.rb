@@ -14,7 +14,7 @@ class Message < ApplicationRecord
   belongs_to :conversation
   belongs_to :user, optional: true
 
-  broadcasts_to :conversation
+  #broadcasts_to :conversation
   after_save :update_text_conversation
 
   private
