@@ -24,7 +24,7 @@ class Gpt3
     temperature = Rails.env == 'production' ? ENV['GPT_TEMPERATURE'] : 0.15
     model = Rails.env == 'production' ? ENV['GPT_MODEL'] : 'text-babbage-001'
 
-    response = client.completions(engine: model, parameters: { prompt: text, max_tokens: max_tokens, temperature: temperature })
+    response = client.completions(engine: model, parameters: { prompt: text, max_tokens: max_tokens.to_i, temperature: temperature.to_f })
     response.parsed_response['choices'].map{ |c| c["text"] }.first
   end
 
