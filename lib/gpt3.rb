@@ -20,7 +20,7 @@ class Gpt3
   end
 
   def self.completions(text)
-    max_tokens = Rails.env == 'production' ? ENV['GPT_MAX_TOKENS'] : 30
+    max_tokens = Rails.env == 'production' ? ENV['GPT_MAX_TOKENS'] : 40
     temperature = Rails.env == 'production' ? ENV['GPT_TEMPERATURE'] : 0.15
     model = Rails.env == 'production' ? ENV['GPT_MODEL'] : 'text-babbage-001'
 
