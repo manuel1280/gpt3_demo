@@ -3,18 +3,6 @@ section.hero.is-info
     .container
       div.is-half
         h1.title
-          = current_user.name.capitalize
+          = current_user.name.gsub('-', ' ').capitalize
       div.is-half
         = link_to "Log Out", destroy_user_session_path, 'data-turbo-method': :delete, class:"navbar-item"
-
-
-//- flash.each do |name, msg|
-  - if msg.is_a?(String)
-    #notify class=("notification #{name.to_s == 'notice' ? 'is-success' : 'is-danger'} global-notification")
-      button.delete onclick="hide_flash()"
-      p class="#{name.to_s}" = msg
-
-javascript:
-  function hide_flash() {
-    document.getElementById('notify').style.display = 'none';
-  }
